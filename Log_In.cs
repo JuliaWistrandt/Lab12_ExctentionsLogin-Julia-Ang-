@@ -23,27 +23,25 @@ namespace LoginPasswordException
             this.username = username;
             this.password = password;
             this.comfirmPassword = comfirmPassword;
-            
+
         }
 
-        // from 3 to 20 characters, not empty 
+        // from 3 to 20 characters, not empty, no spaces 
         public static bool IsValidLogin(string username)
         {
-            if(username.Length < minLength || username.Length > maxLength || string.IsNullOrWhiteSpace(username)) throw new WrongLoginException();
+            if (username.Length < minLength || username.Length > maxLength || string.IsNullOrWhiteSpace(username) || username.Contains(' ')) throw new WrongLoginException();
             return false;
         }
 
 
-        // from 3 to 20 characters, contains at least one number, not empty, matching with confirmPassword
+        // from 3 to 20 characters, contains at least one number, not empty, no spaces, matching with confirmPassword
         public static bool IsValidPassword(string password, string comfirmPassword)
         {
 
+            if (password.Length < minLength || password.Length > maxLength || string.IsNullOrWhiteSpace(password) || !password.Any(char.IsDigit) || password.Contains(' ')) throw new WrongPasswordException();
             if (!password.Equals(comfirmPassword)) throw new WrongPasswordException("Password does not match password confirmation.");
-                
-            if (password.Length < minLength || password.Length > maxLength || string.IsNullOrWhiteSpace(password) || !password.Any(char.IsDigit)) throw new WrongPasswordException();
-
             return false;
-
+            
         }
 
 

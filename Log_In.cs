@@ -14,7 +14,7 @@ namespace LoginPasswordException
         public string login;
         public string password;
         public string confirmPassword;
-        
+
 
         public Log_In(string login, string password, string confirmPassword)
         {

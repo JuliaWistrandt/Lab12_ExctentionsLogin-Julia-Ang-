@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace LoginPasswordException
 {
-    internal class IsValidLoginPassword
+    public class IsValidLoginPassword
     {
         const int minLength = 3;
         const int maxLength = 20;
-       
-        
-        
+
+
         public static bool Inspect(string username, string password, string comfirmPassword)
         {
             // Login: from 3 to 20 characters, no spaces;
@@ -22,7 +21,7 @@ namespace LoginPasswordException
 
             if (username.Contains(' ')) throw new WrongLoginException("login cannot contain spaces.");
 
-            
+
             // Password: from 3 to 20 characters, contains at least one number, no spaces, matching with confirmPassword;
             if (password.Length < minLength) throw new WrongPasswordException("password must be at least 3 characters long.");
 
@@ -47,5 +46,7 @@ namespace LoginPasswordException
 
 
         }
+
+
     }
 }

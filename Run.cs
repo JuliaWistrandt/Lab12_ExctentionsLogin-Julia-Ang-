@@ -13,7 +13,7 @@ namespace LoginPasswordException
         public void DoRun()
         {
             //option one: test manually 
-            var database = new UsersForTest();
+            var database =  new DataBaseList();
             AddUsers(database);
 
             foreach (var user in database.usersList)
@@ -40,7 +40,7 @@ namespace LoginPasswordException
                     Console.WriteLine("\nYour username must be:\n* between 3 and 20 characters long\n* cannot contain spaces.\n");
                     Console.WriteLine("Please, enter your username");
                     string username = Console.ReadLine();
-                    
+
                     Console.WriteLine("Your password must be:\n* have at least 3 characters long\n* have max 20 characters long\n* contain at least one number\n* * cannot contain spaces.\n");
                     Console.WriteLine("Please, enter your password");
                     string password = Console.ReadLine();
@@ -73,7 +73,7 @@ namespace LoginPasswordException
 
         }
 
-        static void AddUsers(UsersForTest database)
+        static void AddUsers(DataBaseList database)
         {
             database.AddUser(" Urt", "wer2", "wer2"); // empty space in login
             database.AddUser("Uu", "Wrt", "Wrt"); // login is too short 
@@ -86,5 +86,7 @@ namespace LoginPasswordException
             database.AddUser("Uuu", "Wrt", "Wrt2"); // password and confirmation password are different 
 
         }
+
+
     }
 }

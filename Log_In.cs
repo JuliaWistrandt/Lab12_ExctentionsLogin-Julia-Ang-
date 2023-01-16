@@ -11,54 +11,18 @@ namespace LoginPasswordException
 {
     public class Log_In
     {
-        string username;
-        string password;
-        string comfirmPassword;
-        //string email;
-        const int minLength = 3;
-        const int maxLength = 20;
+        public string login;
+        public string password;
+        public string confirmPassword;
+        
 
-        public Log_In(string username, string password, string comfirmPassword)
+        public Log_In(string login, string password, string confirmPassword)
         {
-            this.username = username;
+            this.login = login;
             this.password = password;
-            this.comfirmPassword = comfirmPassword;
-
+            this.confirmPassword = confirmPassword;
         }
-
-        // from 3 to 20 characters, not empty, no spaces 
-        public static bool IsValidLogin(string username)
-        {
-            if (username.Length < minLength || username.Length > maxLength || string.IsNullOrWhiteSpace(username) || username.Contains(' ')) throw new WrongLoginException();
-            return false;
-        }
-
-
-        // from 3 to 20 characters, contains at least one number, not empty, no spaces, matching with confirmPassword
-        public static bool IsValidPassword(string password, string comfirmPassword)
-        {
-
-            if (password.Length < minLength || password.Length > maxLength || string.IsNullOrWhiteSpace(password) || !password.Any(char.IsDigit) || password.Contains(' ')) throw new WrongPasswordException();
-            if (!password.Equals(comfirmPassword)) throw new WrongPasswordException("Password does not match password confirmation.");
-            return false;
-            
-        }
-
-
-
-        // method to validate email by @, numbers, .com etc
-        //public static bool IsValidEmail(string email)
-        //{
-        //    Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", RegexOptions.IgnoreCase);
-        //    return emailRegex.IsMatch(email);
-
-        //}
-
-
-
 
     }
 }
-
-// källor:
-// https://www.youtube.com/watch?v=JTMdCC5FY34 
+ 
